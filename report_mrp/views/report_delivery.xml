@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="id_report_delivery_paper_format" model="report.paperformat">
+            <field name="name">report delivery</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">30</field>
+            <field name="margin_left">20</field>
+            <field name="margin_right">20</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">33</field>
+            <field name="dpi">90</field>
+        </record>
+        <report
+                id="id_mrp_production_delivery_report"
+                model="report.mrp"
+                report_type="qweb-pdf"
+                string="Print Delivery"
+                name="report_mrp.id_mrp_production_delivery_report_template"
+                file="report_mrp.id_mrp_production_delivery_report_template"
+                menu="True"
+        />
+        <template id="id_mrp_production_delivery_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+<!--                            <center style="font-size: 25px;">www.modetissuemill.com</center>-->
+                            <table width="100%">
+                                <tr style="border: 2px solid #000000;">
+                                    <td width="25%" style="font-size: 25px;">Customer :</td>
+                                    <td width="25%" class="text-center">
+                                        <span t-field="o.mrp_production_id.user_id.name"/>
+                                    </td>
+                                    <td width="25%"></td>
+                                    <td width="25%"></td>
+                                </tr>
+                                <tr style="border: 2px solid #000000;">
+                                    <td width="25%" style="font-size: 22px;">Customer Order No :</td>
+                                    <td width="25%" class="text-center">
+                                        <span t-field="o.name"/>
+                                    </td>
+                                    <td width="25%"></td>
+                                    <td width="25%"></td>
+                                </tr>
+                                <tr style="border: 2px solid #000000;">
+                                    <td width="25%" style="font-size: 25px;">Paper Grade :</td>
+                                    <td width="25%" class="text-center">
+                                        <span t-field="o.paper_grade"/>
+                                    </td>
+                                    <td width="25%"></td>
+                                    <td width="25%"></td>
+                                </tr>
+                                <tr style="border: 2px solid #000000;">
+                                    <td width="25%" style="font-size: 24px;">Basic Weight GMS :</td>
+                                    <td width="25%" class="text-center">
+                                        <span t-field="o.basic_weight_gms"/>
+                                    </td>
+                                    <td width="25%"></td>
+                                    <td width="25%"></td>
+                                </tr>
+                                <tr style="border: 2px solid #000000;">
+                                    <td width="25%" style="font-size: 25px;">Roll Width CM :</td>
+                                    <td width="25%" class="text-center">
+                                        <span t-field="o.roll_width_cm"/>
+                                    </td>
+                                    <td width="25%" style="font-size: 25px;">Shift :</td>
+                                    <td width="25%" class="text-center">
+                                        <span t-field="o.shift"/>
+                                    </td>
+                                </tr>
+                                <tr style="border: 2px solid #000000;">
+                                    <td width="25%" style="font-size: 25px;">Roll O.D (CM) :</td>
+                                    <td width="25%" class="text-center">
+                                        <span t-field="o.roll_od_cm"/>
+                                    </td>
+                                    <td width="25%" style="font-size: 25px;">Core Diameter :</td>
+                                    <td width="25%" class="text-center">
+                                        <span t-field="o.core_diameter"/>
+                                    </td>
+                                </tr>
+                                <tr style="border: 2px solid #000000;">
+                                    <td width="25%" style="font-size: 25px;">Number Of Piles :</td>
+                                    <td width="25%" class="text-center">
+                                        <span t-field="o.number_of_piles"/>
+                                    </td>
+                                    <td width="25%" style="font-size: 25px;">Number Of Rolls :</td>
+                                    <td width="25%" class="text-center">
+                                        <span t-field="o.number_of_rolls"/>
+                                    </td>
+                                </tr>
+                                <tr style="border: 2px solid #000000;">
+                                    <td width="25%" style="font-size: 25px;">Color :</td>
+                                    <td width="25%" class="text-center">
+                                        <span t-field="o.color"/>
+                                    </td>
+                                    <td width="25%" style="font-size: 25px;">No Of Joints :</td>
+                                    <td width="25%" class="text-center">
+                                        <span t-field="o.no_of_joints"/>
+                                    </td>
+                                </tr>
+                                <tr style="border: 2px solid #000000;">
+                                    <td width="25%" style="font-size: 25px;">Production Date :</td>
+                                    <td width="25%" class="text-center">
+                                        <span t-field="o.production_date"/>
+                                    </td>
+                                    <td width="25%"></td>
+                                    <td width="25%"></td>
+                                </tr>
+                                <tr style="border: 2px solid #000000;">
+                                    <td width="25%" style="font-size: 47px;">Weight Kg :</td>
+                                    <td width="25%" class="text-center" style="font-size: 50px;">
+                                        <span t-field="o.weight_kg"/>
+                                    </td>
+                                    <td width="25%" style="font-size: 50px;">Code Number :</td>
+                                    <td width="25%" class="text-center" style="font-size: 30px;">
+                                        <span t-field="o.code_number"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <center style="font-size: 25px;">MADE IN EGYPT</center>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

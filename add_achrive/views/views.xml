@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="add_button_acthjion_view" model="ir.actions.server">
+            <field name="name">Confirm Order</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                records.button_confirm()
+            </field>
+        </record>
+        <record id="add_button_cancel_view" model="ir.actions.server">
+            <field name="name">Cancel Order</field>
+            <field name="model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                records.button_cancel()
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

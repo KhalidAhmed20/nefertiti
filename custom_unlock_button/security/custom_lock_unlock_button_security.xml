@@ -1,0 +1,6 @@
+<odoo>
+    <record id="group_view_lock_unlock_button" model="res.groups">
+        <field name="name">View Unlock Button</field>
+         <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="employee_shift_line_tree" model="ir.ui.view">
+            <field name="name">employee shift line tree</field>
+            <field name="model">employee.shift.line</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Shift">
+                    <field name="employee_id"/>
+                    <field name="is_day_shift"/>
+                    <field name="shift_name"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="hour_from"/>
+                    <field name="hour_to"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

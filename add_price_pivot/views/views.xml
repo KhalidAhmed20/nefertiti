@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+       <record id="add_price_unit_to_invoice_report" model="ir.ui.view">
+            <field name="name">add.price_unit.to.invoice.report</field>
+            <field name="model">account.invoice.report</field>
+            <field name="inherit_id" ref="account.view_account_invoice_report_pivot"/>
+            <field name="arch" type="xml">
+                <xpath expr="//pivot" position="inside">
+                    <field name="price_unit" type="measure"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

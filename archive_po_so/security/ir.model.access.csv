@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_archive_po_so_archive_po_so,archive_po_so.archive_po_so,model_archive_po_so_archive_po_so,base.group_user,1,1,1,1

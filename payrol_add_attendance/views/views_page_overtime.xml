@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="id_hr_payslip_inheri_oertime" model="ir.ui.view">
+            <field name="name">hr_payslip_inherit_overtime</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="id_hr_payslip_inheri_shifts"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='attendance_shifts']" position="after">
+                    <page string="OverTime" name="overtime">
+                        <field name="overtime_payrol_ids">
+                            <tree edit="false" create="false">
+                                <field name="employee_id"/>
+                                <field name="project_id"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="days_no_tmp"/>
+                                <field name="state"/>
+                                <field name="type" invisible="1"/>
+                                <field name="payslip_paid" widget="toggle_button"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

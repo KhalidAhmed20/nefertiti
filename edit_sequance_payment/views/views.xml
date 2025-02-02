@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="id_view_receive_receive_form__words" model="ir.ui.view">
+            <field name="name">receive receive form words</field>
+            <field name="model">receive.receive</field>
+            <field name="inherit_id" ref="add_menu_exp_account_enterprise13.receive_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='receive_date']" position="before">
+                    <!-- Add your fields or attributes here -->
+                    <field name="sequencee" force_save="1"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="id_view_expense_expense_form__words" model="ir.ui.view">
+            <field name="name">expense expense form words</field>
+            <field name="model">expense.expense</field>
+            <field name="inherit_id" ref="add_menu_exp_account_enterprise13.expense_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='expense_date']" position="before">
+                    <!-- Add your fields or attributes here -->
+                    <field name="sequencee" force_save="1"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="id_view_account_payment_form__words" model="ir.ui.view">
+            <field name="name">account payment form words</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_type']" position="before">
+                    <!-- Add your fields or attributes here -->
+                    <field name="sequencee" force_save="1"/>
+                    <field name="sequence_douple" force_save="1" attrs="{'invisible': [('payment_type', '!=', 'transfer')]}"/>
+                </xpath>
+            </field>
+        </record>
+        <!-- explicit list view definition -->
+
+        <record id="account_journal_check_id" model="ir.ui.view">
+            <field name="name">account.journal..id</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='currency_id']" position="after">
+                    <field name="category_code"/>
+                    <!--                    <field name="category_code_check"/>-->
+                    <field name="sequencee_in"/>
+                    <field name="sequencee_out"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

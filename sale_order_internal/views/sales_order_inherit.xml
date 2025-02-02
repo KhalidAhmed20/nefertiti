@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record id="view_inherit_sale_order_form" model="ir.ui.view">
+            <field name="name">inherit.sale.order</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+                <!-- This record was hashed because the customer want to delete it -->
+
+                <!--                                <xpath expr="//field[@name='sale_order_template_id']" position="after">-->
+                <!--                                    <field name="reference_number"/>-->
+                <!--                                </xpath>-->
+
+                <!-- Delete the customer reference from the other info page -->
+
+                <xpath expr="//field[@name='client_order_ref']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!-- Add The customer reference after the tags field instead of the default place of it -->
+
+                <xpath expr="//field[@name='tags_id']" position="after">
+                    <field name="client_order_ref"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="create_invoice_foreach_so" model="ir.actions.server">
+            <field name="name">Create Batch Invoice</field>
+            <field name="model_id" ref="model_sale_order"/>
+            <field name="binding_model_id" ref="model_sale_order"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">
+                if records:
+                action = records.action_create_batch_invoice()
+            </field>
+        </record>
+
+    </data>
+</odoo>
+
+
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_payment_receipt_document_new_bank_cash" inherit_id="account.report_payment_receipt_document">
+        <xpath expr="//div[3]" position="after">
+            <div class="row mb64">
+                <div class="col-6" t-if="o.journal_id">
+                    <strong>Journal :</strong>
+                    <span t-field="o.journal_id.name"/>
+                </div>
+
+            </div>
+            <div class="row mb64">
+
+                <div class="col-6" t-if="o.destination_journal_id">
+                    <strong>Transfer To:</strong>
+                    <span t-field="o.destination_journal_id.name"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

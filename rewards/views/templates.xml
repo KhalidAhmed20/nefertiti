@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+      <record id="sequence_self_rewards" model="ir.sequence">
+        <field name="name">rewards</field>
+        <field name="code">rewards</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">REW/</field>
+        <field name="padding">5</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+    </data>
+</odoo>

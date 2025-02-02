@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="general_ledger_vendor_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="partners" t-as="rep">
+                    <div class="page">
+                        <h2 align="center" t-esc="rep['partner_name']"/>
+
+                        <table style="width:100%" class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th style="width:auto; white-space: nowrap;" class="text-center">
+                                        <span>الرصيد</span>
+                                    </th>
+                                    <th style="width:auto; white-space: nowrap;" class="text-center">
+                                        <span>دائن</span>
+                                    </th>
+                                    <th style="width:auto; white-space: nowrap;" class="text-center">
+                                        <span>مدين</span>
+                                    </th>
+                                    <th style="width:auto;" class="text-center">
+                                        <span>المرجع (رقم الاشارة)</span>
+                                    </th>
+                                    <th style="width:auto;" class="text-center">
+                                        <span>السعر</span>
+                                    </th>
+                                    <th style="width:auto;" class="text-center">
+                                        <span>الكمية</span>
+                                    </th>
+                                    <th style="width:auto;" class="text-center">
+                                        <span>الأصناف</span>
+                                    </th>
+                                    <th style="width:auto;" class="text-center">
+                                        <span>الحركة</span>
+                                    </th>
+                                    <th style="width:auto; white-space: nowrap;" class="text-center">
+                                        <span>التاريخ</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="move" t-value=""/>
+                                <t t-set="last_date" t-value="False"/>
+                                 <t t-foreach="sorted(rep['move_data'], key=lambda d: d['date'])" t-as="d">
+                                    <tr class="text-center">
+                                        <td style="width:auto">
+                                            <t t-esc="d['balance']"/>
+                                        </td>
+                                        <td style="width:auto; white-space: nowrap;">
+                                            <t t-esc="d['move_credit']"/>
+                                        </td>
+                                        <td style="width:auto; white-space: nowrap;">
+                                            <t t-esc="d['move_debit']"/>
+                                        </td>
+                                        <td style="width:auto">
+                                            <t t-esc="d['account_invoice_ref']"/>
+                                        </td>
+                                        <td style="width:auto">
+                                            <t t-esc="d['product_price_unit']"/>
+                                        </td>
+                                        <td style="width:auto">
+                                            <t t-esc="d['product_quantity']"/>
+                                        </td>
+                                        <td style="width:auto">
+                                            <t t-esc="d['product_name']"/>
+                                        </td>
+                                        <td style="width:auto">
+                                            <t t-if="move!=d['move_name']">
+                                                <t t-esc="d['move_name']"/>
+                                                <t t-set="move" t-value="d['move_name']"/>
+                                            </t>
+                                        </td>
+                                        <td style="width:auto; white-space: nowrap;">
+                                            <t t-esc="d['date']"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="id_general_ledger_vendor_pdf" model="ir.actions.report">
+        <field name="name">General Ledger pdf</field>
+        <field name="model">general.ledger.vendor.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">edit_general_ledger_customer.general_ledger_vendor_template</field>
+        <field name="report_file">edit_general_ledger_customer.general_ledger_vendor_template</field>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

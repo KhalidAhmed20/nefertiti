@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="id_stock_picking_report_delivery" model="ir.ui.view">
+            <field name="name">stock picking report delivery</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Delivery Report">
+                        <group>
+                            <group>
+                                <field name="paper_grade"/>
+                                <field name="basic_weight_gms"/>
+                                <field name="roll_width_cm"/>
+                                <field name="shift"/>
+                                <field name="roll_od_cm"/>
+                                <field name="core_diameter"/>
+                            </group>
+                            <group>
+                                <field name="number_of_piles"/>
+                                <field name="number_of_rolls"/>
+                                <field name="color"/>
+                                <field name="no_of_joints"/>
+                                <field name="weight_kg"/>
+                                <field name="code_number"/>
+                                <field name="production_date"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

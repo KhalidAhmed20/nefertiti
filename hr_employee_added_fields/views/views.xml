@@ -1,0 +1,62 @@
+<odoo>
+  <data>
+      <record id="add_fields_view_employee_form" model="ir.ui.view">
+          <field name="name">add.fields.view.employee.form</field>
+          <field name="model">hr.employee</field>
+          <field name="inherit_id" ref="hr.view_employee_form"/>
+          <field name="arch" type="xml">
+<!--              add detailed address -->
+              <xpath expr="//page[@name='personal_information']/group/group[1]" position="before">
+                  <group string="Personal Address">
+                      <label for="street" string="Address"/>
+                      <div class="o_address_format">
+                          <field name="street" placeholder="Street..." class="o_address_street"/>
+                          <field name="city" placeholder="City" class="o_address_city"/>
+                          <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}"/>
+                          <field name="zip" placeholder="Area Code" class="o_address_zip"/>
+                          <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True}"/>
+                      </div>
+                  </group>
+              </xpath>
+              <xpath expr="//page[@name='personal_information']/group/group[7]" position="before">
+                  <group string="Military Status">
+                        <field name="military_state"/>
+                  </group>
+              </xpath>
+              <xpath expr="//page[@name='personal_information']/group/group[last()]" position="after">
+                  <group string="Driving Licence">
+                        <field name="driving_licence"/>
+                        <field name="driving_licence_type"/>
+                        <field name="driving_licence_extract"/>
+                  </group>
+                  <group string="Job Grade">
+                        <field name="job_grade"/>
+                  </group>
+              </xpath>
+              <xpath expr="//field[@name='gender']" position="after">
+                    <field name="religion"/>
+              </xpath>
+              <xpath expr="//field[@name='birthday']" position="after">
+                    <field name="age"/>
+              </xpath>
+              <xpath expr="//field[@name='mobile_phone']" position="before">
+                    <field name="emp_code"/>
+              </xpath>
+              <xpath expr="//field[@name='certificate']" position="replace">
+                    <field name="certification_id"/>
+              </xpath>
+          </field>
+      </record>
+<!--      add emp_code to search view-->
+      <record id="view_employee_filter_add_empcode_search" model="ir.ui.view">
+          <field name="name">view.employee.filter.add.empcode.search</field>
+          <field name="model">hr.employee</field>
+          <field name="inherit_id" ref="hr.view_employee_filter"/>
+          <field name="arch" type="xml">
+              <xpath expr="//field[@name='name']" position="before">
+                    <field name="emp_code" string="EmpCode" filter_domain="[('emp_code', 'ilike', self)]"/>
+              </xpath>
+          </field>
+      </record>
+  </data>
+</odoo>

@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+
+        <record id="id_product_category_inh" model="ir.ui.view">
+            <field name="name">product category inh</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='parent_id']" position="after">
+                    <field name="category_code"/>
+                    <field name="sequence" readonly="0"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="id_product_product_inh" model="ir.ui.view">
+            <field name="name">product product inh</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='default_code']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                    <attribute name="force_save">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="id_product_template_inh" model="ir.ui.view">
+            <field name="name">product product inh</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='default_code']" position="attributes">
+<!--                    <attribute name="readonly">1</attribute>-->
+                    <attribute name="force_save">1</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

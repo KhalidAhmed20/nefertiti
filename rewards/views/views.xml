@@ -1,0 +1,122 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="rewards_tree_view">
+            <field name="name">rewards.tree</field>
+            <field name="model">rewards</field>
+            <field name="arch" type="xml">
+                <tree string="rewards Tree">
+                    <field name="refrence" />
+                    <field name="employee_ids"/>
+                    <field name="datee"/>
+                    <field name="departments"/>
+                    <field name="amounts"/>
+                </tree>
+
+
+            </field>
+
+
+        </record>
+
+
+        <record model="ir.actions.act_window" id="rewards_list_action">
+            <field name="name">Rewards</field>
+            <field name="res_model">rewards</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Rewards Page</p>
+
+            </field>
+
+
+        </record>
+        <menuitem id="main_rewards_menu" name="Rewards"
+                  action="rewards_list_action"
+                  parent="hr.menu_hr_root"
+                  sequence="7"
+
+        />
+
+        <!--        <menuitem id="rewards_menu" name="Rewards" parent="main_rewards_menu"-->
+        <!--                  action="reward_list_action"/>-->
+        <!--        <menuitem id="rewards_menu"-->
+        <!--                  action="reward_list_action"-->
+        <!--                  parent="hr.menu_hr_root"-->
+        <!--                  name="Rewards Requests"-->
+        <!--                  sequence="6"/>-->
+
+    </data>
+    <record model="ir.ui.view" id="rewards_form_view">
+        <field name="name">rewards.form</field>
+        <field name="model">rewards</field>
+        <field name="arch" type="xml">
+            <form string="rewards Form">
+                <sheet>
+                <div class="oe_title">
+                <h1><field name="refrence" /></h1>
+                </div>
+                    <group>
+                        <group>
+                            <field name="employee_ids"/>
+                            <field name="datee"/>
+                            <field name="departments"/>
+                            <field name="amounts"/>
+                            <!--                            <field name="payslip_id"/>-->
+                        </group>
+                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>  
+
+
+            </form>
+
+
+        </field>
+
+
+    </record>
+    <record model="ir.ui.view" id="rewards_search_view">
+        <field name="name">rewards.search</field>
+        <field name="model">rewards</field>
+        <field name="arch" type="xml">
+            <search string="Rewards Search">
+                <field name="employee_ids"/>
+                <field name="datee"/>
+                <field name="departments"/>
+                <field name="amounts"/>
+
+
+            </search>
+
+
+        </field>
+
+
+    </record>
+
+    <record id="hr_payslip_add_page_rewards" model="ir.ui.view">
+        <field name="name">hr.payslip.add.page.rewards</field>
+        <field name="model">hr.payslip</field>
+        <!--        <field name="inherit_id" ref="hr_payroll_community.view_hr_payslip_form"/>-->
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <!--            <field name="number" position="after">-->
+            <!--                <field name="adjustments_ids" readonly="1"/>-->
+            <!--            </field>-->
+
+            <xpath expr="//notebook" position="inside">
+                <!-- Add your fields or attributes here -->
+                <page name="Rewards" string="Rewards">
+                    <field name="rewards_ids" readonly="1" nolabel="1"/>
+                </page>
+            </xpath>
+
+
+        </field>
+    </record>
+</odoo>

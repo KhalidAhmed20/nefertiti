@@ -1,0 +1,117 @@
+<odoo>
+  <data>
+    <record id="allowance_deduction" model="ir.ui.view">
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='information']" position="after">
+                    <!--      page for allowance-->
+                    <page string="Allowances" name="allowance">
+                        <group>
+                            <label for="hra"/>
+                            <div class="o_row" name="houseallowance">
+                                <field name="hra" nolabel="1"/>
+                                <span>/ month</span>
+                            </div>
+                            <field name="tr_allowance"/>
+                            <field name="risk_allowance"/>
+                            <field name="food_allowance"/>
+                            <field name="attendence_allowance"/>
+<!--                            <field name="a_100_300"/>-->
+                        </group>
+                    </page>
+<!--                    page for deduction-->
+                    <page string="Deduction" name="deduction">
+<!--                        For Fellowship Section-->
+                        <group string="Fellow Ship">
+                            <label for="applied_fellow"/>
+                            <div class="o_row">
+                                <field name="applied_fellow" nolabel="1"/>
+                            </div>
+                            <group attrs="{'invisible': [('applied_fellow','=', False)]}">
+                                <field name="fellow_type"/>
+                                <field name="fellow_percentage" attrs="{'invisible': [('fellow_type','!=','percentage')]}"/>
+                                <field name="fellow_amount" attrs="{'readonly': [('fellow_type','=','percentage')]}"/>
+                            </group>
+                        </group>
+<!--                        For social insurance -->
+                        <group string="Social Insurance">
+                            <label for="applied_social"/>
+                            <div class="o_row">
+                                <field name="applied_social" nolabel="1"/>
+                            </div>
+                            <group attrs="{'invisible': [('applied_social','=', False)]}">
+                                <field name="insurance_salary"/>
+                                <field name="company_insurance_rate"/>
+                                <field name="company_insurance_value"/>
+                                <field name="insurance_amount"/>
+                                <field name="insurance_date"/>
+                                <field name="insurance_number"/>
+                                <field name="insurance_job_desc"/>
+                            </group>
+                            <group attrs="{'invisible': [('applied_social','=', True)]}">
+                                <field name="social_reject_reason"/>
+                            </group>
+                        </group>
+                        <!-- For Medical Care -->
+                        <group string="Medical Care Employee">
+                            <label for="applied_medical_emp"/>
+                            <div class="o_row">
+                                <field name="applied_medical_emp" nolabel="1"/>
+                            </div>
+                            <group attrs="{'invisible': [('applied_medical_emp','=', False)]}">
+                                <field name="medical_class"/>
+                                <field name="coverage_rate"/>
+                                <field name="medical_emp_amount"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </group>
+                        </group>
+                        <group string="Medical Care Family" attrs="{'invisible': [('applied_medical_emp','=', False)]}">
+                            <label for="applied_medical_fam"/>
+                            <div class="o_row">
+                                <field name="applied_medical_fam" nolabel="1"/>
+                            </div>
+                        </group>
+                        <group attrs="{'invisible': ['|',('applied_medical_fam','=', False),('applied_medical_emp','=', False)]}">
+                            <field name="medical_fam_ids">
+                                <tree editable="bottom">
+                                    <field name="member_name" required="1"/>
+                                    <field name="relation_id" required="1"/>
+                                    <field name="medical_class"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                </tree>
+                            </field>
+                            <field name="medical_fam_amount"/>
+                        </group>
+                        <!--      For medical insurance                     -->
+                        <group string="Medical Insurance">
+                            <label for="applied_medical_insurance"/>
+                            <div class="o_row">
+                                <field name="applied_medical_insurance" nolabel="1"/>
+                            </div>
+                            <group attrs="{'invisible': [('applied_medical_insurance','=', False)]}">
+                                <field name="med_insur_card_no"/>
+                                <field name="med_insur_issue_date"/>
+                                <field name="med_insur_end_date"/>
+                                <field name="applied_111_app"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+    </record>
+    <record id="id_hr_contract_view_tree_company_insurance" model="ir.ui.view">
+        <field name="name">hr contract view tree company insurance</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_start']" position="before">
+                <field name="company_insurance_rate"/>
+                <field name="company_insurance_value"/>
+            </xpath>
+        </field>
+    </record>
+  </data>
+</odoo>

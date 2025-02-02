@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="id_mrp_bom_inherit_form" model="ir.ui.view">
+            <field name="name">mrp bom inherit form</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Machine">
+                        <field name="mrp_bom_ids">
+                            <tree editable="bottom">
+                                <field name="product_tmpl_id"/>
+                                <field name="operating_hours"/>
+                                <field name="machine_cost"/>
+                                <field name="total_cost"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Laborers">
+                        <field name="mrp_boms_ids">
+                            <tree editable="bottom">
+<!--                                <field name="product_tmpl_id"/>-->
+                                <field name="employee_id"/>
+                                <field name="operating_hours"/>
+                                <field name="hourly_cost"/>
+                                <field name="total_cost"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <record id="id_mrp_production_inherit_form" model="ir.ui.view">
+            <field name="name">mrp production inherit form</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Machine" attrs="{'invisible': [('bom_id', '=', False)]}">
+                        <field name="mrp_productions_ids">
+                            <tree editable="bottom">
+                                <field name="product_tmpl_id"/>
+                                <field name="operating_hours"/>
+                                <field name="machine_cost"/>
+                                <field name="total_cost"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Laborers" attrs="{'invisible': [('bom_id', '=', False)]}">
+                        <field name="mrp_production_ids">
+                            <tree editable="bottom">
+<!--                                <field name="product_tmpl_id"/>-->
+                                <field name="employee_id"/>
+                                <field name="operating_hours"/>
+                                <field name="hourly_cost"/>
+                                <field name="total_cost"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+                <xpath expr="//button[@name='action_assign']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//div[@name='button_box']/button" position="before">
+                    <button name="get_finished_product"
+                            type="object"
+                            string="Laborer Time Sheet"
+                            class="oe_stat_button"
+                            icon="fa-archive">
+                    </button>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

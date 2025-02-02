@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="expense_report_id">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <!--			<link rel='stylesheet' href="/journal_entries_print/static/src/css/report_css.css"/>-->
+                <t t-foreach="docs" t-as="o">
+                    <div class="page" style="font-size:15px;">
+                        <div>
+                            <h3>
+                                <span t-field="o.seq"/>
+                            </h3>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="row mb64">
+                                <div class="col-6">
+                                    <strong>Journal:</strong>
+                                    <span t-field="o.journal_id.name"/>
+                                </div>
+                                <div class="col-6">
+                                    <strong>Journal Entry:</strong>
+                                    <span t-field="o.journal_entry_id.name"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div class="row mb64">
+                                <div class="col-6">
+                                    <strong>Date:</strong>
+                                    <span t-field="o.expense_date"/>
+                                </div>
+                                <div class="col-6">
+                                    <strong>Reference:</strong>
+                                    <span t-field="o.name"/>
+                                </div>
+                            </div>
+
+                            <!--                            <table width="100%" style="border:0px solid white">-->
+                            <!--                                <tr>-->
+                            <!--                                    <td>-->
+                            <!--                                        <span class="text-left">Journal:</span>-->
+                            <!--                                        <br/>-->
+                            <!--                                        <span class="text-center" t-field="o.journal_id.name"/>-->
+                            <!--                                    </td>-->
+                            <!--                                    <td>-->
+                            <!--                                        <span class="text-left">Journal Entry:</span>-->
+                            <!--                                        <br/>-->
+                            <!--                                        <span class="text-center" t-field="o.journal_entry_id.name"/>-->
+                            <!--                                    </td>-->
+                            <!--                                </tr>-->
+                            <!--                                <tr>-->
+                            <!--                                    <td>-->
+                            <!--                                        <span class="text-left">Date:</span>-->
+                            <!--                                        <br/>-->
+
+                            <!--                                        <span class="text-center" t-field="o.expense_date"/>-->
+                            <!--                                    </td>-->
+                            <!--                                    <td>-->
+                            <!--                                        <span lass="text-left">Reference:</span>-->
+                            <!--                                        <br/>-->
+                            <!--                                        <span class="text-center" t-field="o.name"/>-->
+                            <!--                                    </td>-->
+                            <!--                                </tr>-->
+                            <!--                            </table>-->
+                        </div>
+                        <br/>
+                        <br/>
+                        <div class="row">
+                            <style>
+                                .tblbordr {
+                                text-align: center;
+                                border: 2px solid black;
+                                }
+                            </style>
+                            <br/>
+                            <br/>
+                            <table width="100%" class="border-collapse:separate;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Product</th>
+                                        <th class="text-center">Account</th>
+                                        <th class="text-center">Analytic Account</th>
+                                        <th class="text-center">Quantity</th>
+                                        <th class="text-center">Price</th>
+                                        <th class="text-center">Taxes</th>
+                                        <th class="text-center">SubTotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="o.expenses_ids" t-as="line">
+                                        <tr>
+                                            <td class="text-center">
+                                                <span t-field="line.product_ids.name"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="line.account_id.name"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="line.analytic_account_id.name"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="line.quantity"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="line.price_unit"/>
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="line.tax_ids"/>
+
+                                            </td>
+                                            <td class="text-center">
+                                                <span t-field="line.price_subtotal"/>
+
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <br/>
+                            <br/>
+                            <br/>
+
+                        </div>
+                        <div class="row">
+                            <table width="50%" class="border-collapse:separate;">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">UnTaxed Amount</th>
+                                        <th class="text-center">Tax</th>
+                                        <th class="text-center">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">
+                                            <span t-field="o.amount_taxed"/>
+                                        </td>
+                                        <td class="text-center">
+                                            <span t-field="o.tax"/>
+                                        </td>
+                                        <td class="text-center">
+                                            <span t-field="o.total"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <report
+            id="expense_print_report_id"
+            model="expense.expense"
+            string="Expense Report"
+            report_type="qweb-pdf"
+            name="expense_receive_reports.expense_report_id"
+            file="expense_receive_reports.expense_report_id"
+    />
+</odoo>

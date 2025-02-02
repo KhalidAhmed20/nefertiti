@@ -1,0 +1,12 @@
+<odoo>
+    <record id="view_picking_form_inherit_lock_unlock" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.lock.unlock</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_toggle_is_locked']" position="attributes">
+                <attribute name="groups">custom_unlock_button.group_view_lock_unlock_button</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

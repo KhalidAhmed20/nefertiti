@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <report
+            id="treatment_advantages_report_pdf"
+            model="treatment.advantages"
+            report_type="qweb-pdf"
+            string="Treatment and Advantages report"
+            name="hr_requsets_report.print_treatment_advantages_report"
+            file="hr_requsets_report.print_treatment_advantages_report"
+            print_report_name = "(object.refrence)"
+        />
+
+
+
+         <template id="print_treatment_advantages_report">
+            <t t-call="web.html_container">
+            <t t-call="web.internal_layout">
+                    <t t-foreach="docs" t-as="doc">
+
+                        <div class="page" style="font_size:5px !important;direction: ltr">
+                            <center>
+                                <h3><u>علاج و مزايا </u></h3>
+                                <span t-field="doc.refrence"/>
+                            </center>
+                            <div class="col-md-6" style="direction: ltr; text-align:left"> 
+                            <!-- border:1px solid black; -->
+                                <div>
+                                        <!--<div >
+                                         Employee Name:
+                                                <span t-field="doc.employee_ids.name" />
+                                        </div><br/>-->
+                                        <div>
+                                          Date:
+                                            <span t-field="doc.datee" t-options='{"format": "dd-MM-yyyy"}'/>                      
+                                        </div><br/>
+                                        <div >
+                                          Department:
+                                                <span t-field="doc.departments" />
+                                        </div><br/>
+                                        <div >
+                                          Amount:
+                                                <span t-field="doc.amounts" />
+                                        </div>
+                                    <!-- <table width="100%" class="table table-borderd table-sm table-stripped" style="border:1px solid black; text-align:left">
+                                        <tr>
+                                            <td width="50%">
+                                               Employee Name:
+                                                <span t-field="doc.employee_ids.name" />
+                                            </td>
+                                            <td>
+                                                Date:
+                                                <span t-field="doc.datee" t-options='{"format": "dd-MM-yyyy"}'/>
+                                            </td>
+                                           
+                                        </tr>
+                                        <tr>
+                                            
+                                            <td>
+                                                 Department:
+                                                <span t-field="doc.departments"/>
+                                                
+                                            </td>
+                                             <td>
+                                                Amount:
+                                                <span t-field="doc.amounts"/>
+                                            </td>
+                                        </tr>
+                                        
+                                        
+                                        
+                                    </table> -->
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template> 
+        
+       
+    
+    </data>
+
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mrp_workcenter_line,access_mrp_workcenter_line,model_mrp_workcenter_line,base.group_user,1,1,1,1
+access_mrp_bom_lin,access_mrp_bom_lin,model_mrp_bom_lin,base.group_user,1,1,1,1
+access_mrp_bom_lines,access_mrp_bom_lines,model_mrp_bom_lines,base.group_user,1,1,1,1
+access_lebor_timesheet,access_lebor_timesheet,model_lebor_timesheet,base.group_user,1,1,1,1
+access_lebor_timesheetline,access_lebor_timesheetline,model_lebor_timesheetline,base.group_user,1,1,1,1

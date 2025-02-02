@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        Inherit Form View to Modify it
+        <record id="id_hr_payslip_inheri_form" model="ir.ui.view">
+            <field name="name">hr_payslip_inherit</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="employee_screen.id_hr_payslip_inherit_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='penalities']" position="after">
+                    <page string="Attendance" name="attendance">
+                        <field name="hr_attend_ids">
+                            <tree edit="false" create="false">
+                                <field name="employee_id"/>
+                                <field name="check_in"/>
+                                <field name="check_out"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="hour_from"/>
+                                <field name="hour_to"/>
+                                <field name="worked_hours" string="Work Hours" widget="float_time" sum="Total"/>
+                                <field name="actual_worked_hours" string="Actual Work Hours" widget="float_time" sum="Actual"/>
+                                <field name="late" widget="float_time"/>
+                                <field name="over_time" widget="float_time"/>
+                                <field name="total_over_time" widget="float_time"/>
+                                <field name="net_over_time" widget="float_time"/>
+                                <field name="is_day_shift"/>
+                                <field name="early_sign_in" widget="float_time"/>
+                                <field name="early_leave" widget="float_time"/>
+                            </tree>
+                        </field>
+                        <group>
+                            <field name="total_actual_hours"/>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='struct_id']" position="after">
+                    <!--                    <field name="struct_number"/>-->
+                    <field name="work_location"/>
+                    <field name="equipment"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="id_hr_payslip_inheri_shifts" model="ir.ui.view">
+            <field name="name">hr_payslip_inherit_shifts</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="id_hr_payslip_inheri_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='attendance']" position="after">
+                    <page string="Attendance Shifts" name="attendance_shifts">
+                        <field name="shift_name_ids">
+                            <tree edit="false" create="false">
+                                <field name="shift_name" string="Shift Name"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="hour_from"/>
+                                <field name="hour_to"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <record id="id_hr_payslip_inheri_fridays" model="ir.ui.view">
+            <field name="name">hr_payslip_inherit_fridays</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="id_hr_payslip_inheri_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='attendance']" position="after">
+                    <page string="Fridays" name="Fridays">
+                        <field name="fridays_payroll_ids">
+                            <tree edit="false" create="false">
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <record id="id_hr_payslip_inheri_rest" model="ir.ui.view">
+            <field name="name">hr_payslip_inherit_rest</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="id_hr_payslip_inheri_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='Fridays']" position="after">
+                    <page string="The Rest" name="Rest">
+                        <field name="rest_payroll_ids">
+                            <tree edit="false" create="false">
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+        <!-- Inherit Form View to Modify it -->
+        <record id="id_hr_payroll_code_inherit" model="ir.ui.view">
+            <field name="name">hr payroll structure inherit</field>
+            <field name="model">hr.payroll.structure</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_employee_grade_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='country_id']" position="after">
+                    <field name="struct_number"/>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="hr_payslip_view_form">
+            <field name="name">hr payslip inherit form add code</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='number']" position="after">
+                    <field name="emp_code"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

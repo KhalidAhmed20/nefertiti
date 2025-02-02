@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+        <report
+                id="id_salary_advance_report"
+                model="salary.advance"
+                report_type="qweb-pdf"
+                string="طلب سلفة شهرية"
+                name="reports_nefertity.id_report_template_salary_advance"
+                file="reports_nefertity.id_report_template_salary_advance"
+        />
+
+
+        <template id="id_report_template_salary_advance">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <center>
+                                <h2>
+                                    طلب سلفة شهرية
+                                </h2>
+                            </center>
+                            <br/>
+                            <center>
+                                <h2>
+                                    <span t-field="doc.name"/>
+                                </h2>
+                            </center>
+                            <br/>
+                            <!--                            <center>-->
+                            <!--                                <h2>-->
+                            <!--                                    بيانات الموظف-->
+                            <!--                                </h2>-->
+                            <!--                            </center>-->
+                            <!--                            <table class="table table-bordered" width="100%">-->
+                            <!--                                <thead>-->
+                            <!--                                    <tr>-->
+                            <!--                                        <td class="text-right"><span t-field="doc.employee_id"/></td>-->
+                            <!--                                        <td class="text-right" width="15%">-->
+                            <!--                                            : اسم الموظف-->
+                            <!--                                            <br>-->
+                            <!--                                            </br>-->
+                            <!--                                            <br>-->
+                            <!--                                            </br>-->
+                            <!--                                        </td>-->
+                            <!--                                    </tr>-->
+                            <!--                                    <tr>-->
+                            <!--                                        <td class="text-right"><span t-field="doc.employee_id.emp_code"/></td>-->
+                            <!--                                        <td class="text-right">-->
+                            <!--                                            : كود الموظف-->
+                            <!--                                            <br>-->
+                            <!--                                            </br>-->
+                            <!--                                            <br>-->
+                            <!--                                            </br>-->
+                            <!--                                        </td>-->
+                            <!--                                    </tr>-->
+                            <!--                                    <tr>-->
+                            <!--                                        <td class="text-right"><span t-field="doc.employee_id.department_id.name"/></td>-->
+                            <!--                                        <td class="text-right">-->
+                            <!--                                            : القسم-->
+                            <!--                                            <br>-->
+                            <!--                                            </br>-->
+                            <!--                                            <br>-->
+                            <!--                                            </br>-->
+                            <!--                                        </td>-->
+                            <!--                                    </tr>-->
+                            <!--                                    <tr>-->
+                            <!--                                        <td class="text-right"><span t-field="doc.employee_id.job_id.name"/></td>-->
+                            <!--                                        <td class="text-right">-->
+                            <!--                                            : الوظيفة-->
+                            <!--                                            <br>-->
+                            <!--                                            </br>-->
+                            <!--                                            <br>-->
+                            <!--                                            </br>-->
+                            <!--                                        </td>-->
+                            <!--                                    </tr>-->
+                            <!--                                </thead>-->
+                            <!--                            </table>-->
+                            <center>
+                                <h2>
+                                    بيانات الطلب
+                                </h2>
+                            </center>
+                            <table class="table table-bordered" width="100%">
+                                <thead>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.date"/>
+                                        </td>
+                                        <td class="text-right" width="15%">
+                                            التاريخ :
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.name"/>
+                                        </td>
+                                        <td class="text-right" width="15%">
+                                            : رقم السلفة
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.amount"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : المبلغ
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.text_amount"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : التفقيط
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.reason"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : سبب السلفة
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <br>
+                            </br>
+                            <br>
+                            </br>
+                            <br>
+                            </br>
+                            <!--                            <table width="100%">-->
+                            <!--                                <thead>-->
+                            <!--                                    <tr>-->
+                            <!--                                        <td class="text-right">توقيع الموظف</td>-->
+                            <!--                                    </tr>-->
+                            <!--                                    <tr>-->
+                            <!--                                        <td class="text-left">توقيع المدير</td>-->
+                            <!--                                    </tr>-->
+                            <!--                                </thead>-->
+                            <!--                            </table>-->
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+        <report
+                id="id_salary_advance_report2"
+                model="salary.advance"
+                report_type="qweb-pdf"
+                string="طلب سلفة شهرية"
+                name="reports_nefertity.id_report_template_salary_advance2"
+                file="reports_nefertity.id_report_template_salary_advance2"
+        />
+        <template id="id_report_template_salary_advance2">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <center>
+                                <h2>
+                                    طلب سلفة شهرية
+                                </h2>
+                            </center>
+                            <br/>
+                            <center>
+                                <h2>
+                                    <span t-field="doc.name"/>
+                                </h2>
+                            </center>
+                            <br/>
+                            <center>
+                                <h2>
+                                    بيانات الموظف
+                                </h2>
+                            </center>
+                            <table class="table table-bordered" width="100%">
+                                <thead>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.employee_id"/>
+                                        </td>
+                                        <td class="text-right" width="15%">
+                                            : اسم الموظف
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.employee_id.emp_code"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : كود الموظف
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.employee_id.department_id.name"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : القسم
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.employee_id.job_id.name"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : الوظيفة
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.amount"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : المبلغ
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.text_amount"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : التفقيط
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <center>
+                                <h2>
+                                    بيانات الطلب
+                                </h2>
+                            </center>
+                            <table class="table table-bordered" width="100%">
+                                <thead>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.date"/>
+                                        </td>
+                                        <td class="text-right" width="15%">
+                                            التاريخ :
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.name"/>
+                                        </td>
+                                        <td class="text-right" width="15%">
+                                            : رقم السلفة
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.amount"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : المبلغ
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.text_amount"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : التفقيط
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.reason"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : سبب السلفة
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <br>
+                            </br>
+                            <!--                            <table width="100%">-->
+                            <!--                                <thead>-->
+                            <!--                                    <tr>-->
+                            <!--                                        <td class="text-right">توقيع الموظف</td>-->
+                            <!--                                    </tr>-->
+                            <!--                                    <tr>-->
+                            <!--                                        <td class="text-left">توقيع المدير</td>-->
+                            <!--                                    </tr>-->
+                            <!--                                </thead>-->
+                            <!--                            </table>-->
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <data>
+        <record id="view_mrp_production_req" model="ir.ui.view">
+            <field name="name">inherit.mrp.production.request</field>
+            <field name="model">mrp.production.request</field>
+            <field name="inherit_id" ref="mrp_production_request.view_mrp_production_request_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='assigned_to']" position="after">
+                    <field name="customer"/>
+                </xpath>
+                <xpath expr="//field[@name='customer']" position="after">
+                    <field name="request_official"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_mrp_production_lines" model="ir.ui.view">
+            <field name="name">inherit.mrp.production</field>
+            <field name="model">mrp.production.request</field>
+            <field name="inherit_id" ref="mrp_production_request.view_mrp_production_request_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook/page[@name='mrp_production']/field[@name='mrp_production_ids']/tree/field[@name='name']"
+                       position="after">
+                    <field name="product" optional="hide"/>
+                    <field name="quantity" optional="hide"/>
+                    <field name="size" optional="hide"/>
+                    <field name="grams" optional="hide"/>
+                    <field name="toppings" optional="hide"/>
+                    <field name="color" optional="hide"/>
+                    <field name="product_id"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
+
+
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="id_loans_lines_tree" model="ir.ui.view">
+            <field name="name">Loans Lines Tree</field>
+            <field name="model">loans.line</field>
+            <field name="arch" type="xml">
+                <tree string="Loans Lines Tree">
+                    <field name="employee_id"/>
+                    <field name="name"/>
+                    <field name="amount"/>
+                </tree>
+            </field>
+        </record>
+        <record id="id_loans_lines_search" model="ir.ui.view">
+            <field name="name">Loans Lines Search</field>
+            <field name="model">loans.line</field>
+            <field name="arch" type="xml">
+                <search string="Loans Lines Search">
+                    <field name="name"/>
+                    <field name="amount"/>
+                    <field name="employee_id"/>
+                </search>
+            </field>
+        </record>
+        <record id="id_loans_lines_action" model="ir.actions.act_window">
+            <field name="name">Loans Lines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">loans.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+        <menuitem id="id_loans_lines_menu" name="Loans Lines" parent="menu_loans__action" action="id_loans_lines_action"
+                  sequence="3"/>
+    </data>
+</odoo>

@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+        <template id="id_grid_purchaseorder_inherit" inherit_id="purchase.report_purchaseorder_document">
+            <xpath expr="//div[@id='total']" position="after">
+                <Br></Br>
+                <Br></Br>
+                <Br></Br>
+                <Br></Br>
+                <Br></Br>
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <td>
+                                <p>Add prepared By</p>
+                            </td>
+                            <td>
+                                <p Align="right">Approved By</p>
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </xpath>
+        </template>
+
+        <template id="id_grid_report_saleorder_inherit" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@name='signature']" position="after">
+                <Br></Br>
+                <Br></Br>
+                <Br></Br>
+                <Br></Br>
+                <Br></Br>
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <td>
+                                <p>Add prepared By</p>
+                            </td>
+                            <td>
+                                <p Align="right">Approved By</p>
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
+            </xpath>
+        </template>
+    </data>
+</odoo>
