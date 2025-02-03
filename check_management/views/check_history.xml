@@ -1,0 +1,19 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+<!--      payment check Line tree view-->
+      <record model="ir.ui.view" id="payment_check_line__history_tree">
+      <field name="name">History Check lines</field>
+      <field name="model">check.history</field>
+          <field name="arch" type="xml">
+            <tree>
+                <field name="check_number"/>
+                <field name="check_date"/>
+                <field name="check_amount"/>
+                <field name="reason"/>
+            </tree>
+          </field>
+      </record>
+  </data>
+</odoo>
