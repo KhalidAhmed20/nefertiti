@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <record id="id_report_mrp_tree" model="ir.ui.view">
+           <field name="name">report mrp tree</field>
+           <field name="model">report.mrp</field>
+           <field name="arch" type="xml">
+               <tree string="Report Mrp Tree" edit="false" create="false">
+                   <field name="paper_grade"/>
+                   <field name="basic_weight_gms"/>
+                   <field name="roll_width_cm"/>
+                   <field name="shift"/>
+                   <field name="roll_od_cm"/>
+                   <field name="core_diameter"/>
+                   <field name="number_of_piles"/>
+                   <field name="number_of_rolls"/>
+                   <field name="color"/>
+                   <field name="no_of_joints"/>
+                   <field name="weight_kg"/>
+                   <field name="code_number"/>
+                   <field name="production_date"/>
+                   <field name="lot_id"/>
+               </tree>
+           </field>
+       </record>
+    </data>
+</odoo>

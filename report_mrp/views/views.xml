@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="group_components_id" model="res.groups">
+            <field name="name">group Components</field>
+        </record>
+        <record id="id_mrp_production_form_view_inherit_extended" model="ir.ui.view">
+            <field name="name">mrp production form inherit extended</field>
+            <field name="model">mrp.production</field>
+            <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button name="get_line_report_delivery"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-archive"
+                            string="Report Delivery"
+                    />
+                </xpath>
+                <xpath expr="//page[1]" position="attributes">
+                    <attribute name="groups">report_mrp.group_components_id</attribute>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Delivery Report">
+                        <group>
+                            <group>
+                                <field name="paper_grade"/>
+                                <field name="basic_weight_gms"/>
+                                <field name="roll_width_cm"/>
+                                <field name="shift"/>
+                                <field name="roll_od_cm"/>
+                                <field name="core_diameter"/>
+                            </group>
+                            <group>
+                                <field name="number_of_piles"/>
+                                <field name="number_of_rolls"/>
+                                <field name="color"/>
+                                <field name="no_of_joints"/>
+                                <field name="weight_kg"/>
+                                <field name="code_number"/>
+                                <field name="production_date"/>
+                                <field name="lot_id"/>
+                            </group>
+                        </group>
+                    </page>
+                    <!--                    <page string="Information Report">-->
+                    <!--                        <field name="mrp_production_ids">-->
+                    <!--                            <tree editable="bottom">-->
+                    <!--                                <field name="paper_grade"/>-->
+                    <!--                                <field name="basic_weight_gms"/>-->
+                    <!--                                <field name="roll_width_cm"/>-->
+                    <!--                                <field name="shift"/>-->
+                    <!--                                <field name="roll_od_cm"/>-->
+                    <!--                                <field name="core_diameter"/>-->
+                    <!--                                <field name="number_of_piles"/>-->
+                    <!--                                <field name="number_of_rolls"/>-->
+                    <!--                                <field name="color"/>-->
+                    <!--                                <field name="no_of_joints"/>-->
+                    <!--                                <field name="weight_kg"/>-->
+                    <!--                                <field name="code_number"/>-->
+                    <!--                                <field name="production_date"/>-->
+                    <!--                            </tree>-->
+                    <!--                        </field>-->
+                    <!--                    </page>-->
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
