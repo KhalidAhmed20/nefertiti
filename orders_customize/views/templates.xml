@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+
+        <template id="report_saleorder_document_nefertity_inherit" inherit_id="sale.report_saleorder_document">
+
+            <xpath expr="//th[@name='th_priceunit']" position="after">
+                <th name="th_size" class="text-right">Size</th>
+                <th name="th_gram" class="text-right">Gram</th>
+                <th name="th_layer" class="text-right">Layers</th>
+            </xpath>
+
+            <xpath expr="//td[@name='td_priceunit']" position="after">
+                <td name="td_size" class="text-right">
+                    <span t-field="line.product_size.name"/>
+                </td>
+                <td name="td_gram" class="text-right">
+                    <span t-field="line.product_gram.name"/>
+                </td>
+                <td name="td_layer" class="text-right">
+                    <span t-field="line.product_layers.name"/>
+                </td>
+            </xpath>
+
+        </template>
+
+    </data>
+</odoo>

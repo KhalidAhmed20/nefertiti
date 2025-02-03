@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_product_size,sale.product_size,model_sale_product_size,base.group_user,1,1,1,1
+access_sale_product_gram,sale.product_gram,model_sale_product_gram,base.group_user,1,1,1,1
+access_sale_product_layers,sale.product_layers,model_sale_product_layers,base.group_user,1,1,1,1
