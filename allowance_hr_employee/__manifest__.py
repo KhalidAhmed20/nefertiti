@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+{
+    'name': "allowance_hr_employee",
+
+    'summary': """
+        Short (1 phrase/line) summary of the module's purpose, used as
+        subtitle on modules listing or apps.openerp.com""",
+
+    'description': """
+        add allowance tab to contract
+    """,
+
+    'author': "IBS",
+    'website': "http://www.ibs-egy.com",
+
+
+    'category': 'Uncategorized',
+    'version': '0.1',
+
+    # any module necessary for this one to work correctly
+    'depends': ['base', 'hr_contract', 'hr_employee_updation'],
+
+    # always loaded
+    'data': [
+        'security/ir.model.access.csv',
+        'views/views.xml',
+        'views/templates.xml',
+    ],
+    # only loaded in demonstration mode
+    'demo': [
+        'demo/demo.xml',
+    ],
+}
