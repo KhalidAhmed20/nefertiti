@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_edit_report_purcheas_edit_report_purcheas,edit_report_purcheas.edit_report_purcheas,model_edit_report_purcheas_edit_report_purcheas,base.group_user,1,1,1,1
