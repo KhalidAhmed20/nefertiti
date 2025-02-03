@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <!--      tree view for attendance.treatment-->
+        <record model="ir.ui.view" id="attendance_treatment_tree_view">
+            <field name="name">attendance.treatment.tree.view</field>
+            <field name="model">attendance.treatment</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="employee_id"/>
+                    <field name="check_in"/>
+                    <field name="check_out"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--      form view for attendance.treatment-->
+        <record model="ir.ui.view" id="attendance_treatment_form_view">
+            <field name="name">attendance.treatment.form.view</field>
+            <field name="model">attendance.treatment</field>
+            <field name="arch" type="xml">
+                <form string="Attendance Treatment">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id"/>
+                                <field name="check_in"/>
+                                <field name="check_out"/>
+                                <field name="from_date"/>
+                                <field name="to_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="attendance_treatment_search_view" model="ir.ui.view">
+            <field name="name">attendance.treatment.search.view</field>
+            <field name="model">attendance.treatment</field>
+            <field name="arch" type="xml">
+                <search string="">
+                    <field name="employee_id"/>
+                    <field name="check_in"/>
+                    <field name="check_out"/>
+                    <field name="from_date"/>
+                    <field name="to_date"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="attendance_treatment_form_view_action">
+            <field name="name">Attendance Treatment</field>
+            <field name="res_model">attendance.treatment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="attendance_treatment_menu" name="Attendance Treatment"
+                  parent="hr_attendance.menu_hr_attendance_root"
+                  action="attendance_treatment_form_view_action"/>
+    </data>
+</odoo>
