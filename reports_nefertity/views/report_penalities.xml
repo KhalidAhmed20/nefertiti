@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+<!--        <report-->
+<!--                id="id_penalities_report2"-->
+<!--                model="penalities"-->
+<!--                report_type="qweb-pdf"-->
+<!--                string="جزاءات"-->
+<!--                name="reports_nefertity.id_report_template_penalities"-->
+<!--                file="reports_nefertity.id_report_template_penalities"-->
+<!--        />-->
+         <record id="id_penalities_report2" model="ir.actions.report">
+            <field name="name">جزاءات</field>
+            <field name="model">penalities</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">reports_nefertity.id_report_template_penalities</field>
+            <field name="report_file">reports_nefertity.id_report_template_penalities</field>
+            <field name="binding_model_id" ref="employee_screen.model_penalities"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="id_report_template_penalities">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <center>
+                                <h2>
+                                    جزاء
+                                </h2>
+                            </center>
+                            <br/>
+
+                            <table class="table table-bordered" width="100%">
+                                <thead>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.employee_id"/>
+                                        </td>
+                                        <td class="text-right" width="15%">
+                                            : اسم الموظف
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.employee_id.emp_code"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : كود الموظف
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.employee_id.department_id.name"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : القسم
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.employee_id.job_id.name"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : الوظيفة
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.date"/>
+                                        </td>
+                                        <td class="text-right" width="15%">
+                                            التاريخ :
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <span t-field="doc.days"/>
+                                        </td>
+                                        <td class="text-right">
+                                            : الايام
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                     <tr>
+                                        <td class="text-right">
+<!--                                            <span t-field="doc.x_description"/>-->
+                                        </td>
+                                        <td class="text-right">
+                                            : الوصف
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

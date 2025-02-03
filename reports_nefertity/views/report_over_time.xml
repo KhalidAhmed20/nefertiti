@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+<!--        <report-->
+<!--                id="id_over_time_report"-->
+<!--                model="hr.overtime"-->
+<!--                report_type="qweb-pdf"-->
+<!--                string="طلب اضافى"-->
+<!--                name="reports_nefertity.id_report_template_over_time"-->
+<!--                file="reports_nefertity.id_report_template_over_time"-->
+<!--        />-->
+
+         <record id="id_over_time_report" model="ir.actions.report">
+            <field name="name">طلب اضافى</field>
+            <field name="model">hr.overtime</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">reports_nefertity.id_report_template_over_time</field>
+            <field name="report_file">reports_nefertity.id_report_template_over_time</field>
+            <field name="binding_model_id" ref="ohrms_overtime.model_hr_overtime"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="id_report_template_over_time">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <center>
+                                <h2>
+                                    طلب اضافى
+                                </h2>
+                            </center>
+                            <center>
+                                <h2>
+                                    بيانات الموظف
+                                </h2>
+                            </center>
+                            <table class="table table-bordered" width="100%">
+                                <thead>
+                                    <tr>
+                                        <td class="text-right"><span t-field="doc.employee_id"/></td>
+                                        <td class="text-right" width="15%">
+                                            : اسم الموظف
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right"><span t-field="doc.employee_id.emp_code"/></td>
+                                        <td class="text-right">
+                                            : كود الموظف
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right"><span t-field="doc.employee_id.department_id.name"/></td>
+                                        <td class="text-right">
+                                            : القسم
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right"><span t-field="doc.employee_id.job_id.name"/></td>
+                                        <td class="text-right">
+                                            : الوظيفة
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <center>
+                                <h2>
+                                    بيانات الطلب
+                                </h2>
+                            </center>
+                            <table class="table table-bordered" width="100%">
+                                <thead>
+                                    <tr>
+                                        <td class="text-right"><span t-field="doc.hour_type_bonus"/></td>
+                                        <td class="text-right" width="15%">
+                                            النوع :
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right"><span t-field="doc.date_from"/></td>
+                                        <td class="text-right">
+                                            : من
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right"><span t-field="doc.date_to"/></td>
+                                        <td class="text-right">
+                                            : الى
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right"><span t-field="doc.over_hours"/></td>
+                                        <td class="text-right">
+                                            : المدة
+                                            <br>
+                                            </br>
+                                            <br>
+                                            </br>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <br>
+                            </br>
+                            <br>
+                            </br>
+                            <br>
+                            </br>
+                            <table width="100%">
+                                <thead>
+                                    <tr>
+                                        <td class="text-right">توقيع الموظف</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left">مدير الشؤون الادراية </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
