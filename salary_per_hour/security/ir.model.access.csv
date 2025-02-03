@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_salary_per_hour_salary_per_hour,salary_per_hour.salary_per_hour,model_salary_per_hour_salary_per_hour,base.group_user,1,1,1,1
