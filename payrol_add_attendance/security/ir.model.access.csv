@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_the_value_added_tax,access_the_value_added_tax,model_the_value_added_tax,base.group_user,1,1,1,1
+access_sale_purchases,access_sale_purchases,model_sale_purchases,base.group_user,1,1,1,1
+access_purchas_purchas,access_purchas_purchas,model_purchas_purchas,base.group_user,1,1,1,1
