@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="general_ledger_vendor_wizard_view_form" model="ir.ui.view">
+            <field name="name">inventory.location.wizard.view</field>
+            <field name="model">inventory.location.wizard</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="date_from"/>
+                                <field name="stock_id"/>
+
+                            </group>
+                            <group>
+                                <field name="date_to"/>
+                                <field name="location_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Export Xlsx" name="export_product" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="inventory_location_wizard_view_action" model="ir.actions.act_window">
+            <field name="name">inventory location wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">inventory.location.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+            </field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="inventory_location_wizard_view_menu" name="Location Report"
+                  parent="stock.menu_warehouse_report" action="inventory_location_wizard_view_action" sequence="100"/>
+
+
+        <!--        # record for exist report xlsx-->
+        <report id="report_action_id_inventory_location"
+
+                model="inventory.location.wizard"
+
+                string="Custom XLS Report"
+
+                report_type="xlsx"
+
+                name="report_inventory_location.report_location"
+
+                file="report_inventory_location.report_location"
+
+                attachment_use="False"/>
+    </data>
+</odoo>
