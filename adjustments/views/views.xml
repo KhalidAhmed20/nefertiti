@@ -1,0 +1,125 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="adjustments_tree_view">
+            <field name="name">adjustments.tree</field>
+            <field name="model">adjustments.adjustments</field>
+            <field name="arch" type="xml">
+                <tree string="adjustments Tree">
+                    <field name="refrence" />
+                    <field name="employee_ids"/>
+                    <field name="datee"/>
+                    <field name="departments"/>
+                    <field name="amounts"/>
+
+
+                </tree>
+
+
+            </field>
+
+
+        </record>
+
+
+        <record model="ir.actions.act_window" id="adjustments_list_action">
+            <field name="name">adjustments.action</field>
+            <field name="res_model">adjustments.adjustments</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">Adjustments Page</p>
+
+            </field>
+
+
+        </record>
+        <menuitem id="main_adjustments_menu" name="Adjustments"
+                  action="adjustments_list_action"
+                  parent="hr.menu_hr_root"
+                  sequence="6"
+
+        />
+
+        <!--        <menuitem id="rewards_menu" name="Rewards" parent="main_rewards_menu"-->
+        <!--                  action="reward_list_action"/>-->
+        <!--        <menuitem id="rewards_menu"-->
+        <!--                  action="reward_list_action"-->
+        <!--                  parent="hr.menu_hr_root"-->
+        <!--                  name="Rewards Requests"-->
+        <!--                  sequence="6"/>-->
+
+    </data>
+    <record model="ir.ui.view" id="adjustments_form_view">
+        <field name="name">adjustments.form</field>
+        <field name="model">adjustments.adjustments</field>
+        <field name="arch" type="xml">
+            <form string="Adjustments Form">
+                <sheet>
+                 <div class="oe_title">
+                <h1><field name="refrence" /></h1>
+                </div>
+                    <group>
+                        <group>
+                            <field name="employee_ids"/>
+                            <field name="datee"/>
+                            <field name="departments"/>
+                            <field name="amounts"/>
+                            <!--                            <field name="payslip_id"/>-->
+                        </group>
+                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+
+                    <field name="message_ids"/>
+                </div>
+
+
+            </form>
+
+
+        </field>
+
+
+    </record>
+    <record model="ir.ui.view" id="adjustments_search_view">
+        <field name="name">adjustments.search</field>
+        <field name="model">adjustments.adjustments</field>
+        <field name="arch" type="xml">
+            <search string="Adjustments Search">
+                <field name="refrence" />
+                <field name="employee_ids"/>
+                <field name="datee"/>
+                <field name="departments"/>
+                <field name="amounts"/>
+
+
+            </search>
+
+
+        </field>
+
+
+    </record>
+
+    <record id="hr_payslip_add_page_adjustments" model="ir.ui.view">
+        <field name="name">hr.payslip.add.page.adjustments</field>
+        <field name="model">hr.payslip</field>
+        <!--        <field name="inherit_id" ref="hr_payroll_community.view_hr_payslip_form"/>-->
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <!--            <field name="number" position="after">-->
+            <!--                <field name="adjustments_ids" readonly="1"/>-->
+            <!--            </field>-->
+
+            <xpath expr="//notebook" position="inside">
+                <!-- Add your fields or attributes here -->
+                <page name="adjustments" string="Adjustments">
+                    <field name="adjustments_ids" readonly="1" nolabel="1"/>
+                </page>
+            </xpath>
+
+
+        </field>
+    </record>
+</odoo>

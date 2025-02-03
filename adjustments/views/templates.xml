@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+         <record id="sequence_self_adjustments" model="ir.sequence">
+        <field name="name">adjustments.adjustments</field>
+        <field name="code">adjustments.adjustments</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">ADJ/</field>
+        <field name="padding">5</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+      </record>
+    </data>
+</odoo>
