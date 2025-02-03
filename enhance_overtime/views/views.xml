@@ -1,0 +1,83 @@
+<odoo>
+    <data>
+        <!--    over time form edit-->
+        <record id="enhance_hr_overtime_form_view" model="ir.ui.view">
+            <field name="name">enhance.hr.overtime.form.view</field>
+            <field name="model">hr.overtime</field>
+            <field name="inherit_id" ref="ohrms_overtime.hr_overtime_view_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//button[@name='action_submit_to_finance']" position="replace">
+                    <button name="action_submit_to_finance" string="Submit" type="object" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                </xpath>
+
+                <xpath expr="//field[@name='overtime_type_id']" position="replace">
+                    <field name="overtime_type_id" groups="hr.group_hr_user"
+                           readonly="state != 'f_approve'" invisible="state != 'aaa'"/>
+                </xpath>
+
+                <xpath expr="//field[@name='type']" position="replace">
+                    <field name="type"
+                           readonly="state != 'draft'" invisible="state != 'aaa'"/>
+                </xpath>
+
+                <xpath expr="//separator" position="replace"/>
+                <xpath expr="//page[2]" position="replace"/>
+                <xpath expr="//page[3]" position="replace"/>
+                <xpath expr="//page[2]" position="replace"/>
+
+                <xpath expr="//field[@name='contract_id']" position="after">
+                    <field name="hour_type_bonus"/>
+                </xpath>
+                <xpath expr="//field[@name='days_no_tmp']" position="after">
+                    <field name="over_hours" widget="float_time"/>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <button name="recipt_to_draft" type="object" string="To Draft"/>
+                </xpath>
+            </field>
+        </record>
+        <!--    over time tree edit-->
+        <record id="enhance_hr_overtime_tree_view" model="ir.ui.view">
+            <field name="name">enhance.hr.overtime.tree.view</field>
+            <field name="model">hr.overtime</field>
+            <field name="inherit_id" ref="ohrms_overtime.hr_overtime_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='is_payslip_paid']" position="after">
+                    <field name="hour_type_bonus"/>
+                    <field name="over_hours"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="id_hr_holidays_hr_leave_view_form_manager" model="ir.ui.view">
+            <field name="name">enhance.hr.overtime.tree.view</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="duration_hour" widget="float_time"
+                           invisible="request_unit_hours != True"/>
+                </xpath>
+                <xpath expr="//field[@name='request_hour_from']" position="attributes">
+                    <attribute name="widget">float_time</attribute>
+                </xpath>
+                <xpath expr="//field[@name='request_hour_to']" position="attributes">
+                    <attribute name="widget">float_time</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+<!--        overtime search view-->
+<!--        <record id="overtime_search_view" model="ir.ui.view">-->
+<!--            <field name="name">overtime.search.view</field>-->
+<!--            <field name="model">hr.overtime</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <search string="Employees Overtime">-->
+<!--                    <field name="employee_id" string="EmployeeName"/>-->
+<!--                </search>-->
+<!--            </field>-->
+<!--        </record>-->
+    </data>
+</odoo>
