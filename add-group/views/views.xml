@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="id_purchase_order_form_matrix" model="ir.ui.view">
+            <field name="name">purchase.order.form.inherit.matrix</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="tags_id" invisible="partner_id == False"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="id_sale_order_form_matrix" model="ir.ui.view">
+            <field name="name">sale order form inh</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="tags_id" invisible="partner_id == False"/>
+                </xpath>
+            </field>
+        </record>
+        <!--        add field in hr.employee-->
+        <record id="id_hr_employee_inh" model="ir.ui.view">
+            <field name="name">hr employee form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='work_location_id']" position="after">
+                    <field name="specialization"/>
+                    <field name="equipment"/>
+                </xpath>
+            </field>
+        </record>
+        <!--        edit attribute field category_id-->
+        <record id="id_res_partner_inh" model="ir.ui.view">
+            <field name="name">res partner form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="tags_id"/>
+                </xpath>
+                <xpath expr="//field[@name='category_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!--        add group by in res.partner your name Tags-->
+        <record id="res_partner_view_search_inh" model="ir.ui.view">
+            <field name="name">res partner search inh</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='inactive']" position="before">
+                    <filter name="group_tags_id" string="Tags"
+                            context="{'group_by':'tags_id'}"/>
+                    <separator/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
