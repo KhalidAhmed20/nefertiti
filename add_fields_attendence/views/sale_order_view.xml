@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="sale_inherit_orders_view_form_1" model="ir.ui.view">
+        <field name="name">sale.inherit.orders.view.form.1</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <!-- Add your fields or attributes here -->
+                <field name="orders_manager"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="attendance_view_inherit_tree_hr" model="ir.ui.view">
+        <field name="name">attendance.view.inherit.tree.hr</field>
+        <field name="model">hr.attendance</field>
+        <field name="inherit_id" ref="hr_attendance.view_attendance_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="before">
+                <!-- Add your fields or attributes here -->
+                <field name="emp_code"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
