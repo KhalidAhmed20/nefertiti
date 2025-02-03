@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="id_general_ledger_vendor_wizard_inherit" model="ir.ui.view">
+            <field name="name">id_general_ledger_vendor_wizard_inherit</field>
+            <field name="model">general.ledger.vendor.wizard</field>
+            <field name="inherit_id" ref="report_account_customer.general_ledger_vendor_wizard_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@class='btn-secondary']" position="after">
+                    <button string="Export PDF" name="print_report" type="object" class="btn-primary"/>
+                </xpath>
+            </field>
+     </record>
+</odoo>
