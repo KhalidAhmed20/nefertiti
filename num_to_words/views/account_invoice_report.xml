@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    <template id="mohamed" inherit_id="account.report_invoice_document">-->
+<!--        <xpath expr="//div[@id='total']/div[1]/table" position="after">-->
+<!--            <t t-if='o.text_amount'>-->
+<!--                <span t-field="o.text_amount"/>-->
+<!--            </t>-->
+<!--        </xpath>-->
+<!--    </template>-->
+</odoo>
